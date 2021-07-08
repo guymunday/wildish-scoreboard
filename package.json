@@ -1,0 +1,26 @@
+{
+  "name": "wildish-score",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "babel-plugin-styled-components": "^1.13.1",
+    "framer-motion": "^4.1.17",
+    "graphql": "^15.5.1",
+    "next": "11.0.1",
+    "next-images": "^1.8.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.0"
+  },
+  "devDependencies": {
+    "eslint": "7.30.0",
+    "eslint-config-next": "11.0.1"
+  }
+}
