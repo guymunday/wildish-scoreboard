@@ -94,8 +94,9 @@ export default function Verses() {
                 <AnimatePresence>
                   {players.playerOne.id !== p.id && (
                     <motion.div
-                      initial={{ scale: 0.2 }}
+                      initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
+                      transition={{ delay: 0.1 * i }}
                       exit={{ scale: 0 }}
                       key={p.id}
                       className="verses_player-click"

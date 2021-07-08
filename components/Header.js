@@ -13,6 +13,12 @@ const StyledHeader = styled.header`
   .header_logo {
     max-height: 50px;
   }
+  .header_inner {
+    display: flex;
+    p {
+      margin-right: 20px;
+    }
+  }
 `
 
 export default function Header() {
@@ -23,11 +29,14 @@ export default function Header() {
       <StyledHeader className="black">
         <h1 className="element-invisible">Wildish & Co</h1>
         <img className="header_logo" src={logo} alt="logo" />
-        {pathname !== "/vs" ? (
-          <Link href="/vs">VS</Link>
-        ) : (
-          <Link href="/">Scores</Link>
-        )}
+        <div className="header_inner">
+          <p>Scoreboard v1</p>
+          {pathname !== "/vs" ? (
+            <Link href="/vs">VS</Link>
+          ) : (
+            <Link href="/">Scores</Link>
+          )}
+        </div>
       </StyledHeader>
     </>
   )
