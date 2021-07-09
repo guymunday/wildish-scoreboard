@@ -13,15 +13,29 @@ import {
 
 const LeaderboardStyles = styled.div`
   width: 100%;
-  align-items: flex-end;
   padding: 30px;
   overflow: scroll;
-  .leaderboard_player {
-    width: 300px;
+  .leaderboard_player-container {
+    display: grid;
+    grid-template-columns: 250px 1fr 30px;
     padding: 15px 0;
-    transition: 0.5s ease margin;
-    h3 {
-      margin-bottom: 10px;
+    @media (max-width: 768px) {
+      grid-template-columns: 200px 1fr 30px;
+    }
+    .leaderboard_player {
+      transition: 0.5s ease margin;
+      h3 {
+        margin-bottom: 10px;
+      }
+    }
+    .leaderboard_player-progress {
+      align-self: end;
+      height: 42px;
+      background: black;
+      border-radius: 25px;
+      @media (max-width: 768px) {
+        height: 39px;
+      }
     }
   }
 `
@@ -29,13 +43,22 @@ const LeaderboardStyles = styled.div`
 const ControlStyles = styled.div`
   display: flex;
   padding: 30px;
+  @media (max-width: 550px) {
+    flex-direction: column;
+  }
   form {
+    @media (max-width: 550px) {
+      margin-bottom: 20px;
+    }
     input {
       outline: none;
       border: 1px solid black;
       padding: 10px 15px;
       border-radius: 25px;
       width: 200px;
+      @media (max-width: 550px) {
+        padding: 7px 15px;
+      }
     }
   }
 `
@@ -113,25 +136,32 @@ export default function ScoreBoard() {
       <LeaderboardStyles>
         {data?.players.map((p, i) => {
           return (
-            <motion.div
-              key={p.id}
-              className="leaderboard_player"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ delay: 0.1 * i }}
-              style={{ marginLeft: p.won * 100 }}
-            >
-              <h3 onDoubleClick={() => handleDeletePlayer(p)}>{p?.name}</h3>
-              <p>
-                <button onClick={() => handleUpdateWon(p)}>
-                  Won: {p?.won}
-                </button>{" "}
-                |{" "}
-                <button onClick={() => handleUpdateLost(p)}>
-                  Lost: {p?.lost}
-                </button>
-              </p>
-            </motion.div>
+            <div key={p.id} className="leaderboard_player-container">
+              <motion.div
+                className="leaderboard_player"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.1 * i }}
+              >
+                <h3 onDoubleClick={() => handleDeletePlayer(p)}>{p?.name}</h3>
+                <p>
+                  <button onClick={() => handleUpdateWon(p)}>
+                    Won: {p?.won}
+                  </button>{" "}
+                  <button onClick={() => handleUpdateLost(p)}>
+                    Lost: {p?.lost}
+                  </button>
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: p?.won * 75 }}
+                transition={{ delay: 0.1 * i }}
+                className="leaderboard_player-progress"
+                style={{ width: p?.won * 75 }}
+              />
+              <div style={{ width: 30 }} />
+            </div>
           )
         })}
       </LeaderboardStyles>

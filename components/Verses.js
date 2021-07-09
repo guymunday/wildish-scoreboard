@@ -82,8 +82,8 @@ export default function Verses() {
     <>
       <FlexBox>
         <h2>
-          <span>{players.playerOne.name}</span> VS{" "}
-          <span>{players.playerTwo.name}</span>
+          <strong>{players.playerOne.name}</strong> VS{" "}
+          <strong>{players.playerTwo.name}</strong>
         </h2>
       </FlexBox>
       {!players.playerTwo.id ? (

@@ -8,7 +8,22 @@ const HeadToHeadStyles = styled.div`
   display: flex;
   padding: 100px 30px;
   justify-content: space-around;
+  text-align: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+    padding: 80px 30px;
+  }
   .head-to-head_player {
+    @media (max-width: 768px) {
+      &:first-child {
+        margin-bottom: 100px;
+      }
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
     .head-to-head_player_buttons {
       display: flex;
       width: 100%;

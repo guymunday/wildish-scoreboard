@@ -10,8 +10,14 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   height: 100px;
+  @media (max-width: 500px) {
+    padding: 20px;
+  }
   .header_logo {
     max-height: 50px;
+    @media (max-width: 500px) {
+      max-height: 30px;
+    }
   }
   .header_inner {
     display: flex;
