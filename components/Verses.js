@@ -31,7 +31,9 @@ export default function Verses() {
       id: "",
     },
   })
-  const { data, loading, error } = useQuery(GET_SCOREBOARD)
+  const { data, loading, error } = useQuery(GET_SCOREBOARD, {
+    pollInterval: 500,
+  })
 
   function handleUpdatePlayers(p) {
     if (players.playerOne.id === "") {

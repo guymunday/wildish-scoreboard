@@ -65,7 +65,9 @@ const ControlStyles = styled.div`
 
 export default function ScoreBoard() {
   const [name, setName] = React.useState("")
-  const { data, loading, error } = useQuery(GET_SCOREBOARD)
+  const { data, loading, error } = useQuery(GET_SCOREBOARD, {
+    pollInterval: 500,
+  })
   const [addPlayer] = useMutation(ADD_PLAYER, {
     onCompleted: () => setName(""),
   })
